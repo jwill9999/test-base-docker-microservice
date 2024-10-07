@@ -1,0 +1,6 @@
+[submodule "service-one"]
+	path = service-one
+	url = https://github.com/jwill9999/test-node-server-one.git
+[submodule "service-two"]
+	path = service-two
+	url = https://github.com/jwill9999/test-node-server-two.git
