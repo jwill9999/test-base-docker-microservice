@@ -1,22 +1,18 @@
 services:
   server-one:
-      build:
-        context: ./service-one
-        dockerfile: Dockerfile
+      image: jwill9999/server-one
       environment:
         - NODE_ENV=local
       ports:
         - 3000:3000
   server-two:
-    build:
-      context: ./service-two
-      dockerfile: Dockerfile
+    image: jwill9999/server-two
     environment:
       - NODE_ENV=local
     ports:
       - 3001:3001
   nginx-reverse-proxy:
-    image: nginx:latest
+    image: jwill9999/nginx-reverse-proxy
     ports:
       - 80:80
     depends_on:
