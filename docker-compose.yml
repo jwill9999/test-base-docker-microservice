@@ -1,0 +1,26 @@
+services:
+  server-one:
+      build:
+        context: ./service-one
+        dockerfile: Dockerfile
+      environment:
+        - NODE_ENV=local
+      ports:
+        - 3000:3000
+  server-two:
+    build:
+      context: ./service-two
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=local
+    ports:
+      - 3001:3001
+  nginx-reverse-proxy:
+    image: nginx:latest
+    ports:
+      - 80:80
+    depends_on:
+      - server-one
+      - server-two
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
